@@ -1,13 +1,13 @@
 services:
-  keepr:
-    image: larsmikki/keepr:latest
-    container_name: keepr
+  documentra:
+    image: larsmikki/documentra:latest
+    container_name: documentra
     ports:
       - "3110:3110"
     environment:
       - PORT=3110
     volumes:
-      - /volume2/docker/keepr:/app/vault
+      - /volume2/docker/documentra:/app/vault
     restart: always
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:3110/api/health"]

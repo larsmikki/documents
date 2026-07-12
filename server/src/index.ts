@@ -25,7 +25,7 @@ async function main() {
 
   const app = createApp();
   app.listen(config.port, () => {
-    console.log(`Keepr server running on http://localhost:${config.port}`);
+    console.log(`Documentra server running on http://localhost:${config.port}`);
   });
 }
 
