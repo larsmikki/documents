@@ -12,7 +12,7 @@ export default function Footer({ onShowShortcuts }: FooterProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <span className="text-xs" style={{ color: theme.text2 }}>
-            Â© {new Date().getFullYear()} Documentra
+            Â© {new Date().getFullYear()} Vault
           </span>
           <button
             onClick={onShowShortcuts}
@@ -35,7 +35,7 @@ export default function Footer({ onShowShortcuts }: FooterProps) {
             Donate
           </Link>
           <a
-            href="https://github.com/larsmikki/documentra"
+            href="https://github.com/larsmikki/vault"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs transition-opacity hover:opacity-80"

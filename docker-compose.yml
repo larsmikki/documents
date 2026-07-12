@@ -1,13 +1,13 @@
 services:
-  documentra:
-    image: larsmikki/documentra:latest
-    container_name: documentra
+  vault:
+    image: larsmikki/vault:latest
+    container_name: vault
     ports:
       - "3110:3110"
     environment:
       - PORT=3110
     volumes:
-      - /volume2/docker/documentra:/app/vault
+      - /volume2/docker/vault:/app/vault
     restart: always
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:3110/api/health"]

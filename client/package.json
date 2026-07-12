@@ -1,5 +1,5 @@
 {
-  "name": "documentra-client",
+  "name": "vault-client",
   "private": true,
   "version": "1.0.0",
   "type": "module",
