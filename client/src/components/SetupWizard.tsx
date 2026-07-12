@@ -75,7 +75,7 @@ export const SetupWizard: React.FC<SetupWizardProps> = ({ onClose }) => {
     <Modal open onClose={onClose} title={`Setup — ${stepTitles[step]}`} maxWidth="480px">
       {step === 'provider' && (
         <div className="space-y-3">
-          <p className="text-sm text-text2">Vaulty uses AI to suggest document titles and tags. Choose a provider, or skip for now.</p>
+          <p className="text-sm text-text2">Document Vault uses AI to suggest document titles and tags. Choose a provider, or skip for now.</p>
           {PROVIDERS.map(p => (
             <button
               key={p.value}

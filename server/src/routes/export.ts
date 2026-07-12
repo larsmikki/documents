@@ -63,7 +63,7 @@ router.post('/batch', async (req, res) => {
     const date = new Date().toISOString().split('T')[0];
     res.set({
       'Content-Type': 'application/zip',
-      'Content-Disposition': `attachment; filename="vault-export-${date}.zip"`,
+      'Content-Disposition': `attachment; filename="document-vault-export-${date}.zip"`,
     });
 
     // Pipe the ZIP stream directly to the response â€” no full buffer in memory
@@ -99,7 +99,7 @@ router.get('/csv', (req, res) => {
     const csv = [headers.join(','), ...rows].join('\n');
     res.set({
       'Content-Type': 'text/csv',
-      'Content-Disposition': `attachment; filename="vault-index-${new Date().toISOString().split('T')[0]}.csv"`,
+      'Content-Disposition': `attachment; filename="document-vault-index-${new Date().toISOString().split('T')[0]}.csv"`,
     });
     res.send(csv);
   } catch (err: any) {

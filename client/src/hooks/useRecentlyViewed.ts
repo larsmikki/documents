@@ -7,7 +7,7 @@ interface RecentlyViewedItem {
   viewedAt: number;
 }
 
-const STORAGE_KEY = 'vaulty_recently_viewed';
+const STORAGE_KEY = 'recently_viewed';
 const MAX_ITEMS = 10;
 
 export function useRecentlyViewed() {
