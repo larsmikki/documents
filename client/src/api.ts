@@ -11,7 +11,7 @@ async function fetchJson<T>(url: string, opts?: RequestInit): Promise<T> {
     });
   } catch (err: any) {
     if (err?.name === 'AbortError') throw new Error('Request timed out');
-    throw new Error(`Could not reach the Document Vault server at ${window.location.origin} â€” it may have crashed or restarted`);
+    throw new Error(`Could not reach the Vault server at ${window.location.origin} â€” it may have crashed or restarted`);
   }
   if (!res.ok) {
     const text = await res.text();
@@ -166,7 +166,7 @@ export const api = {
     const blob = await res.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `document-vault-export-${new Date().toISOString().split('T')[0]}.zip`;
+    a.href = url; a.download = `vault-export-${new Date().toISOString().split('T')[0]}.zip`;
     document.body.appendChild(a); a.click(); a.remove();
     window.URL.revokeObjectURL(url);
   },
@@ -177,7 +177,7 @@ export const api = {
     const blob = await res.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `document-vault-index-${new Date().toISOString().split('T')[0]}.csv`;
+    a.href = url; a.download = `vault-index-${new Date().toISOString().split('T')[0]}.csv`;
     document.body.appendChild(a); a.click(); a.remove();
     window.URL.revokeObjectURL(url);
   },

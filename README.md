@@ -1,10 +1,10 @@
-# Document Vault
+# Vault
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-larsmikki%2Fdocument--vault-blue?logo=docker)](https://hub.docker.com/r/larsmikki/document-vault)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-larsmikki%2Fvault-blue?logo=docker)](https://hub.docker.com/r/larsmikki/vault)
 [![Node 20](https://img.shields.io/badge/Node-20-brightgreen?logo=node.js)](https://nodejs.org/)
 
-**Document Vault** is a self-hosted personal file vault. Files stay as real files on disk with portable `.sidecar.json` sidecars and an indexed SQLite database for search — no proprietary blobs, no cloud, no lock-in. Drop the vault on any disk and Document Vault can rebuild its index from the sidecars.
+**Vault** is a self-hosted personal file vault. Files stay as real files on disk with portable `.sidecar.json` sidecars and an indexed SQLite database for search — no proprietary blobs, no cloud, no lock-in. Drop the vault on any disk and Vault can rebuild its index from the sidecars.
 
 ## Features
 
@@ -25,11 +25,11 @@
 
 Pick whichever install path matches your setup. All paths land on [http://localhost:3110](http://localhost:3110).
 
-> **Upgrading from Vault:** the database, documents, sidecars, and browser preferences remain
-> compatible. Keep mounting the existing `vault_data` named volume, or migrate its contents to
-> `document-vault_data`. For the repository's Synology bind mount, move the data from
-> `/volume2/docker/vault` to `/volume2/docker/document-vault`, or keep the old host path in your
-> Compose file. Export filenames now use the `document-vault-` prefix.
+> **Upgrading from Document Vault:** the database, documents, sidecars, and browser preferences
+> remain compatible. Keep mounting the existing `document-vault_data` named volume, or migrate
+> its contents to `vault_data`. For the repository's Synology bind mount, move the data from
+> `/volume2/docker/document-vault` to `/volume2/docker/vault`, or keep the old host path in your
+> Compose file. Export filenames now use the `vault-` prefix.
 
 ### 1. Docker (Docker Desktop, NAS, or any Docker server)
 
@@ -37,30 +37,30 @@ Works on Synology, Unraid, TrueNAS, QNAP, Proxmox, or a plain Docker host.
 
 ```bash
 docker run -d \
-  --name document-vault \
+  --name vault \
   -p 3110:3110 \
-  -v document-vault_data:/app/vault \
+  -v vault_data:/app/vault \
   --restart unless-stopped \
-  larsmikki/document-vault:latest
+  larsmikki/vault:latest
 ```
 
 Or with Compose:
 
 ```yaml
 services:
-  document-vault:
-    image: larsmikki/document-vault:latest
-    container_name: document-vault
+  vault:
+    image: larsmikki/vault:latest
+    container_name: vault
     ports:
       - "3110:3110"
     environment:
       - PORT=3110
     volumes:
-      - document-vault_data:/app/vault
+      - vault_data:/app/vault
     restart: unless-stopped
 
 volumes:
-  document-vault_data:
+  vault_data:
 ```
 
 To keep the vault on a host folder you can browse directly (recommended), bind-mount instead of using a named volume:
@@ -75,8 +75,8 @@ volumes:
 Requires [Git for Windows](https://git-scm.com/download/win) and [Node.js 20+](https://nodejs.org/).
 
 ```powershell
-git clone https://github.com/larsmikki/document-vault.git
-cd document-vault
+git clone https://github.com/larsmikki/vault.git
+cd vault
 npm install
 npm run dev
 ```
@@ -92,8 +92,8 @@ npm start
 
 ```bash
 brew install node git
-git clone https://github.com/larsmikki/document-vault.git
-cd document-vault
+git clone https://github.com/larsmikki/vault.git
+cd vault
 npm install
 npm run dev
 ```
@@ -108,8 +108,8 @@ Debian/Ubuntu:
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs git
 
-git clone https://github.com/larsmikki/document-vault.git
-cd document-vault
+git clone https://github.com/larsmikki/vault.git
+cd vault
 npm install
 npm run dev
 ```
@@ -164,4 +164,4 @@ npm test
 
 ## Support
 
-If Document Vault saves you time, consider [buying me a coffee](https://buymeacoffee.com/larsmikki) or [donating via PayPal](https://paypal.me/larsmikki). It helps keep the project free and maintained.
+If Vault saves you time, consider [buying me a coffee](https://buymeacoffee.com/larsmikki) or [donating via PayPal](https://paypal.me/larsmikki). It helps keep the project free and maintained.
