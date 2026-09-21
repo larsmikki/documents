@@ -228,7 +228,7 @@ export const SettingsPage: React.FC = () => {
       {/* Themes */}
       <Surface className="p-6 mb-5">
         <h2 className="text-base font-bold mb-1 text-text">Themes</h2>
-        <p className="text-xs mb-5 text-text2">Choose how Vault looks to you.</p>
+        <p className="text-xs mb-5 text-text2">Choose how Documents looks to you.</p>
         <ThemePicker />
       </Surface>
 

@@ -1,10 +1,10 @@
-# Vault
+# Documents
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-larsmikki%2Fvault-blue?logo=docker)](https://hub.docker.com/r/larsmikki/vault)
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-larsmikki%2Fdocuments-blue?logo=docker)](https://hub.docker.com/r/larsmikki/documents)
 [![Node 20](https://img.shields.io/badge/Node-20-brightgreen?logo=node.js)](https://nodejs.org/)
 
-**Vault** is a self-hosted personal file vault. Files stay as real files on disk with portable `.sidecar.json` sidecars and an indexed SQLite database for search — no proprietary blobs, no cloud, no lock-in. Drop the vault on any disk and Vault can rebuild its index from the sidecars.
+**Documents** is a self-hosted personal file vault. Files stay as real files on disk with portable `.sidecar.json` sidecars and an indexed SQLite database for search — no proprietary blobs, no cloud, no lock-in. Drop the vault on any disk and Documents can rebuild its index from the sidecars.
 
 ## Features
 
@@ -26,10 +26,10 @@
 Pick whichever install path matches your setup. All paths land on [http://localhost:3110](http://localhost:3110).
 
 > **Upgrading from Document Vault:** the database, documents, sidecars, and browser preferences
-> remain compatible. Keep mounting the existing `document-vault_data` named volume, or migrate
-> its contents to `vault_data`. For the repository's Synology bind mount, move the data from
-> `/volume2/docker/document-vault` to `/volume2/docker/vault`, or keep the old host path in your
-> Compose file. Export filenames now use the `vault-` prefix.
+> remain compatible. Keep mounting the existing host path or named volume, or migrate
+> its contents to `/volume2/docker/documents` (`documents_data`). For the repository's Synology bind mount, move the data from
+> `/volume2/docker/document-vault` to `/volume2/docker/documents`, or keep the old host path in your
+> Compose file. Export filenames now use the `documents-` prefix.
 
 ### 1. Docker (Docker Desktop, NAS, or any Docker server)
 
@@ -37,37 +37,37 @@ Works on Synology, Unraid, TrueNAS, QNAP, Proxmox, or a plain Docker host.
 
 ```bash
 docker run -d \
-  --name vault \
+  --name documents \
   -p 3110:3110 \
-  -v vault_data:/app/vault \
+  -v documents_data:/app/vault \
   --restart unless-stopped \
-  larsmikki/vault:latest
+  larsmikki/documents:latest
 ```
 
 Or with Compose:
 
 ```yaml
 services:
-  vault:
-    image: larsmikki/vault:latest
-    container_name: vault
+  documents:
+    image: larsmikki/documents:latest
+    container_name: documents
     ports:
       - "3110:3110"
     environment:
       - PORT=3110
     volumes:
-      - vault_data:/app/vault
+      - documents_data:/app/vault
     restart: unless-stopped
 
 volumes:
-  vault_data:
+  documents_data:
 ```
 
 To keep the vault on a host folder you can browse directly (recommended), bind-mount instead of using a named volume:
 
 ```yaml
 volumes:
-  - /home/user/Documents/Vault:/app/vault
+  - /home/user/Documents/Documents:/app/vault
 ```
 
 ### 2. Local install on Windows
@@ -75,8 +75,8 @@ volumes:
 Requires [Git for Windows](https://git-scm.com/download/win) and [Node.js 20+](https://nodejs.org/).
 
 ```powershell
-git clone https://github.com/larsmikki/vault.git
-cd vault
+git clone https://github.com/larsmikki/documents.git
+cd documents
 npm install
 npm run dev
 ```
@@ -92,8 +92,8 @@ npm start
 
 ```bash
 brew install node git
-git clone https://github.com/larsmikki/vault.git
-cd vault
+git clone https://github.com/larsmikki/documents.git
+cd documents
 npm install
 npm run dev
 ```
@@ -108,8 +108,8 @@ Debian/Ubuntu:
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs git
 
-git clone https://github.com/larsmikki/vault.git
-cd vault
+git clone https://github.com/larsmikki/documents.git
+cd documents
 npm install
 npm run dev
 ```
@@ -164,4 +164,4 @@ npm test
 
 ## Support
 
-If Vault saves you time, consider [buying me a coffee](https://buymeacoffee.com/larsmikki) or [donating via PayPal](https://paypal.me/larsmikki). It helps keep the project free and maintained.
+If Documents saves you time, consider [buying me a coffee](https://buymeacoffee.com/larsmikki) or [donating via PayPal](https://paypal.me/larsmikki). It helps keep the project free and maintained.

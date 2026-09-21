@@ -1,9 +1,9 @@
 /* ==========================================================================
    App Fleet Design Tokens
    ==========================================================================
-   Single source of truth for design tokens across the app fleet (Fetchr,
-   Stashy, Remindr, Boxy, Budgety, Tradey, Linky, Prompty, Applyr, Pingly,
-   Combatr).
+   Single source of truth for design tokens across the app fleet (Play,
+   Stashr, Reminder, Big Box Companion, Budget, QuantBot, Layers, Launchpad, Prompty,
+   Applyr, Pulse, Encounter, Templar).
 
    ─── HOW THIS FILE IS USED ─────────────────────────────────────────────
    Each app's `client/src/index.css` should:

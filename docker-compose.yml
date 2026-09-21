@@ -1,13 +1,13 @@
 services:
-  vault:
-    image: larsmikki/vault:latest
-    container_name: vault
+  documents:
+    image: larsmikki/documents:latest
+    container_name: documents
     ports:
       - "3110:3110"
     environment:
       - PORT=3110
     volumes:
-      - /volume2/docker/vault:/app/vault
+      - /volume2/docker/documents:/app/vault
     restart: always
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:3110/api/health"]
